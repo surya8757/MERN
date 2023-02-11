@@ -7,7 +7,7 @@ connectDB();
 app.use(express.json({extended:false}));
 app.get('/',(req,res)=>res.send('API RUNNING'));
 
-8
+
 //Define Routes
 app.use('/api/users',require('./router/api/users'));
 app.use('/api/post',require('./router/api/post'));

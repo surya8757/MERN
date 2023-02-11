@@ -5,7 +5,7 @@
   "main": "sever.js",
   "scripts": {
     "start": "node server",
-    "server":"nodemon server"
+    "server": "nodemon server"
   },
   "author": "surya pratap",
   "license": "MIT",
