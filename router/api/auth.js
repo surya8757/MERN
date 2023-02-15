@@ -15,6 +15,7 @@ const User=require('../../models/User');
 
 
 
+
 router.get('/',auth,async(req,res)=>{
    try{
       const user=await User.findById(req.user.id).select('-password');
@@ -57,11 +58,14 @@ if(!isMatch){
    return res.status(400).json({errors:[{msg:'Invalid credentials'}]});
 }
 
+
+
 const payload={
    user:{
       id:user.id
    }
 }
+
 
 jwt.sign(payload,config.get('jwtSecret'),{expiresIn:36000},(err,token)=>{
    if(err) throw err;
