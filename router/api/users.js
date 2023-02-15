@@ -3,7 +3,7 @@ const router=express.Router();
 const gravatar=require("gravatar");
 const jwt=require('jsonwebtoken');
 const config=require('config');
-const {check,validationResult}=require('express-validator/check');
+const {check,validationResult}=require('express-validator');
 const User=require('../../models/User');
 const bcrypt = require( 'bcryptjs/dist/bcrypt' );
 
@@ -30,7 +30,6 @@ async(req,res)=>{
 const {name,email,password}=req.body;
 try{
    let user=await User.findOne({email});
-
    if(user){
       res.status(400).json(errors[{msg:"User already exists"}]);
    }

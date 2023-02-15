@@ -3,7 +3,7 @@ const router=express.Router();
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const config=require('config');
-const {check,validationResult}=require('express-validator/check');
+const {check,validationResult}=require('express-validator');
 const auth=require('../../middleware/auth');
 const User=require('../../models/User');
 
@@ -26,7 +26,7 @@ router.get('/',auth,async(req,res)=>{
 });
 
 
-
+//login user
 router.post('/',[
    check(
       'email',
@@ -62,8 +62,6 @@ const payload={
       id:user.id
    }
 }
-
-
 
 jwt.sign(payload,config.get('jwtSecret'),{expiresIn:36000},(err,token)=>{
    if(err) throw err;
