@@ -33,13 +33,12 @@ router.get('/me',auth,async(req,res)=>{
 //@desc create or update user profile
 //@access Private
 
-router.post('/',[
+router.post('/',[auth,
     check('status','Status is required')
     .not()
     .isEmpty(),
     check('skills','skills is required')
-    .not(),
-    auth
+    .not()
 ],async(req,res)=>{
     const errors=validationResult(req);
     if(!errors.isEmpty())
